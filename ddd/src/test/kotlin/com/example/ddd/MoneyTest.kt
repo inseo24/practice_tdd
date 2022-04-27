@@ -1,6 +1,8 @@
 package com.example.ddd
 
 import org.junit.jupiter.api.Assertions.assertEquals
+import org.junit.jupiter.api.Assertions.assertFalse
+import org.junit.jupiter.api.Assertions.assertTrue
 import org.junit.jupiter.api.Test
 
 class MoneyTest {
@@ -12,5 +14,11 @@ class MoneyTest {
         assertEquals(10, product.amount)
         product = five.times(3)
         assertEquals(15, product.amount)
+    }
+
+    @Test
+    fun testEquality() {
+        assertTrue(Dollar(5).equals(Dollar(5)))
+        assertFalse(Dollar(5).equals(Dollar(6)))
     }
 }
