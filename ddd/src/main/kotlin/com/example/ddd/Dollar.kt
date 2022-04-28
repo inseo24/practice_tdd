@@ -1,14 +1,16 @@
 package com.example.ddd
 
 class Dollar(
-    var amount: Int
+    private var amount: Int
 ) {
 
     fun times(multiplier: Int): Dollar {
         return Dollar(amount * multiplier)
     }
 
-    fun equals(obj: Dollar) : Boolean {
-        return amount == obj.amount
+    override fun equals(obj: Any?): Boolean {
+        obj as Dollar
+        if (amount != obj.amount) return false
+        return true
     }
 }
