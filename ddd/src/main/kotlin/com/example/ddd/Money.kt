@@ -5,6 +5,6 @@ open class Money(
 ) {
     override fun equals(other: Any?): Boolean {
         other as Money
-        return amount == other.amount
+        return amount == other.amount && javaClass == other.javaClass
     }
 }
