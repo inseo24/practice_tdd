@@ -1,8 +1,12 @@
 package com.example.ddd
 
-open abstract class Money(
-    protected var amount: Int
+abstract class Money(
+    protected var amount: Int,
+    protected var currency: String,
 ) {
+    open fun currency(): String {
+        return currency
+    }
 
     abstract fun times(multiplier: Int): Money
 
@@ -12,7 +16,7 @@ open abstract class Money(
     }
 
     companion object {
-        fun dollar(amount: Int): Dollar = Dollar(amount)
-        fun franc(amount: Int): Franc = Franc(amount)
+        fun dollar(amount: Int): Dollar = Dollar(amount, "USD")
+        fun franc(amount: Int): Franc = Franc(amount, "CHF")
     }
 }
