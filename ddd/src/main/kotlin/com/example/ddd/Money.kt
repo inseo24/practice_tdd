@@ -1,18 +1,24 @@
 package com.example.ddd
 
-abstract class Money(
+open class Money(
     protected var amount: Int,
-    protected var currency: String,
+    private var currency: String,
 ) {
-    open fun currency(): String {
+    fun currency(): String {
         return currency
     }
 
-    abstract fun times(multiplier: Int): Money
+    fun times(multiplier: Int): Money {
+        return Money(amount * multiplier, currency)
+    }
+
+    override fun toString(): String {
+        return "$amount $currency"
+    }
 
     override fun equals(other: Any?): Boolean {
         other as Money
-        return amount == other.amount && javaClass == other.javaClass
+        return amount == other.amount && currency() == other.currency()
     }
 
     companion object {
