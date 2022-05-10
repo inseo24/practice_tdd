@@ -3,13 +3,17 @@ package com.example.ddd
 open class Money(
     protected var amount: Int,
     private var currency: String,
-) {
+): Expression {
     fun currency(): String {
         return currency
     }
 
     fun times(multiplier: Int): Money {
         return Money(amount * multiplier, currency)
+    }
+
+    fun plus(addend: Money): Expression {
+        return Money(amount + addend.amount, currency)
     }
 
     override fun toString(): String {
